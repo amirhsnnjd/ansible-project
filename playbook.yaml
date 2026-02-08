@@ -1,0 +1,13 @@
+---
+- name: Install and configure Nginx on all servers
+  hosts: webservers
+  become: yes
+  roles:
+    - role: geerlingguy.nginx
+
+  tasks:
+    - name: Ensure Nginx is started and enabled
+      service:
+        name: nginx
+        state: started
+        enabled: yes

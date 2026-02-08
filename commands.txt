@@ -1,0 +1,15 @@
+
+1. 
+   ansible-galaxy install geerlingguy.nginx
+
+2. 
+   ansible-inventory -i inventory.ini --list
+
+3. 
+   ansible -i inventory.ini all -m ping
+
+4. 
+   ansible-playbook -i inventory.ini playbook.yaml
+
+5. 
+   ansible -i inventory.ini webservers -m service -a "name=nginx state=started" -b
