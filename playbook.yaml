@@ -3,7 +3,7 @@
   hosts: webservers
   become: yes
   roles:
-    - role: geerlingguy.nginx
+    - role: nginx
 
   tasks:
     - name: Ensure Nginx is started and enabled

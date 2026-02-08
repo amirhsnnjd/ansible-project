@@ -1,0 +1,29 @@
+---
+- name: Update package manager (Debian)
+  apt:
+    update_cache: yes
+  when: ansible_os_family == "Debian"
+
+- name: Install nginx (Debian)
+  apt:
+    name: nginx
+    state: present
+  notify: Restart nginx
+  when: ansible_os_family == "Debian"
+
+- name: Install nginx (RedHat)
+  yum:
+    name: nginx
+    state: present
+  notify: Restart nginx
+  when: ansible_os_family == "RedHat"
+
+- name: Start nginx service
+  service:
+    name: nginx
+    state: started
+
+- name: Enable nginx on boot
+  service:
+    name: nginx
+    enabled: yes
